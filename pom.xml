@@ -133,6 +133,21 @@
 		</dependency>
 		<!-- Testing Dependencies  *End*-->
 
+		<!-- Flyway Dependency  -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<!-- Flyway Dependency  *End*-->
+
+		<!-- Actuator Dependency  -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- Actuator Dependency  *End*-->
+
+
 	</dependencies>
 
 	<build>
