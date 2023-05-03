@@ -29,6 +29,25 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+
+		<!-- Spring Boot Starter For Spring Boot Security-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		<!-- Spring Boot Starter For Spring Boot Security-->
+
 		<!-- Spring Boot Starter For Security-->
 
 		<!-- Spring Boot Starter For Hibernate Validator-->
@@ -68,14 +87,6 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- Spring Boot Starter For Spring Boot-->
-
-		<!-- Spring Boot Starter For Spring Boot Security-->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- Spring Boot Starter For Spring Boot Security-->
 
 		<!-- Testing Dependencies  *Start*-->
 
@@ -121,6 +132,21 @@
 			<version>2.8.0</version>
 		</dependency>
 		<!-- Testing Dependencies  *End*-->
+
+		<!-- Flyway Dependency  -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<!-- Flyway Dependency  *End*-->
+
+		<!-- Actuator Dependency  -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- Actuator Dependency  *End*-->
+
 
 	</dependencies>
 
