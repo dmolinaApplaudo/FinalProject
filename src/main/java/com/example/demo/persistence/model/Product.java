@@ -9,30 +9,32 @@ import lombok.Data;
 import java.util.Objects;
 
 @Entity
-@Table(name = "CUSTOMER")
 @Data
-public class Customer {
+@Table(name = "PRODUCT")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
-    @NotNull
-    private long customerId;
+    private Long productId;
 
-    @NotNull(message = "Customers Name can not be Null")
-    @NotBlank(message = "Customers Name can not be left Blank")
+    @NotNull
+    @NotBlank
     @Size(max = 50)
     private String name;
+
+    @NotNull
+    private double price;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return customerId == customer.customerId && Objects.equals(name, customer.name);
+        Product product = (Product) o;
+        return Double.compare(product.price, price) == 0 && Objects.equals(productId, product.productId) && Objects.equals(name, product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(customerId, name);
+        return Objects.hash(productId, name, price);
     }
 }
