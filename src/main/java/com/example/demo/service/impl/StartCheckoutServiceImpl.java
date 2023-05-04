@@ -8,20 +8,20 @@ import com.example.demo.persistence.repository.CustomerRepository;
 import com.example.demo.persistence.repository.ProductRepository;
 import com.example.demo.service.StartCheckoutService;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class StartCheckoutServiceImpl implements StartCheckoutService {
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
-    private CheckoutRepository checkoutRepository;
+    private final CheckoutRepository checkoutRepository;
 
     @Override
     @Transactional
