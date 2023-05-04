@@ -7,12 +7,14 @@ import com.example.demo.persistence.repository.CustomerRepository;
 import com.example.demo.persistence.repository.ProductRepository;
 import com.example.demo.service.StartCheckout;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class StartCheckoutImpl implements StartCheckout {
 
     private CustomerRepository customerRepository;
@@ -20,14 +22,6 @@ public class StartCheckoutImpl implements StartCheckout {
     private ProductRepository productRepository;
 
     private CheckoutRepository checkoutRepository;
-
-    public StartCheckoutImpl(CustomerRepository customerRepository,
-                             ProductRepository productRepository,
-                             CheckoutRepository checkoutRepository) {
-        this.customerRepository = customerRepository;
-        this.productRepository = productRepository;
-        this.checkoutRepository = checkoutRepository;
-    }
 
     @Override
     @Transactional
