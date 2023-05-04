@@ -28,7 +28,7 @@ public class StartCheckoutServiceImpl implements StartCheckoutService {
     public Checkout startCheckout(Long customerId, Set<CartItem> cart) {
         Checkout initialChekout = new Checkout();
         initialChekout.setCustomerId(customerId);
-        initialChekout.setCartItem(cart);
+        initialChekout.setCartItems(cart);
 
         if(!checkoutRepository.existsById(customerId)){
             checkoutRepository.save(initialChekout);
@@ -55,7 +55,7 @@ public class StartCheckoutServiceImpl implements StartCheckoutService {
 
         productSet.add(cartItem);
 
-        initialChekout.setCartItem(productSet);
+        initialChekout.setCartItems(productSet);
 
         if(!checkoutRepository.existsById(customerId)){
             initialChekout = checkoutRepository.save(initialChekout);
