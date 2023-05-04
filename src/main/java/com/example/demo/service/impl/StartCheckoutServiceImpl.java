@@ -5,18 +5,17 @@ import com.example.demo.persistence.model.Checkout;
 import com.example.demo.persistence.repository.CheckoutRepository;
 import com.example.demo.persistence.repository.CustomerRepository;
 import com.example.demo.persistence.repository.ProductRepository;
-import com.example.demo.service.StartCheckout;
+import com.example.demo.service.StartCheckoutService;
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
-public class StartCheckoutImpl implements StartCheckout {
-
+@AllArgsConstructor
+public class StartCheckoutServiceImpl implements StartCheckoutService {
     private CustomerRepository customerRepository;
 
     private ProductRepository productRepository;
