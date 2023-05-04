@@ -3,10 +3,8 @@ package com.example.demo.web.controller;
 import com.example.demo.persistence.model.Checkout;
 import com.example.demo.service.impl.CheckOutInfo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,11 +13,11 @@ import java.util.List;
 @RequestMapping(value = "/checkout")
 public class CheckoutInformationController {
 
-    private CheckOutInfo checkOutInfo;
+    private final CheckOutInfo checkOutInfo;
 
     @GetMapping
-    @ResponseBody
-    List<Checkout> findAll(){
+    @ResponseStatus(HttpStatus.OK)
+    public List<Checkout> findAll(){
         return checkOutInfo.findAll();
     }
 

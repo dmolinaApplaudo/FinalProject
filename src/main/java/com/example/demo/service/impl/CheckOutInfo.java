@@ -11,7 +11,7 @@ import java.util.stream.StreamSupport;
 @Service
 @RequiredArgsConstructor
 public class CheckOutInfo {
-    private CheckoutRepository checkoutRepository;
+    private final CheckoutRepository checkoutRepository;
 
     public List<Checkout> findAll(){
         return StreamSupport

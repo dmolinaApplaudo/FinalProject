@@ -34,7 +34,10 @@ public class LssSecurityConfig {
                 .permitAll()
                 .requestMatchers("/actuator").hasAnyAuthority(defaultUser)
                 .requestMatchers("/actuator/metrics").hasAnyAuthority(defaultUser)
-                .requestMatchers("/actuator/loggers").hasAnyAuthority(defaultUser);
+                .requestMatchers("/actuator/loggers").hasAnyAuthority(defaultUser)
+                .requestMatchers("/checkout").hasAnyAuthority(defaultUser)
+                .requestMatchers("/checkout/**").hasAnyAuthority(defaultUser)
+        ;
 
         http.oauth2Login()
                 .and()

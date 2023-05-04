@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class StartCheckoutController {
 
     private StartCheckoutService startCheckoutService;
+
     @PostMapping(value = "/start")
     @ResponseStatus(HttpStatus.CREATED)
     public Checkout startCheckout(@RequestBody InitialCheckoutBody initialCheckoutBody){
