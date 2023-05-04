@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.exception.CheckOutIsActiveException;
+import com.example.demo.persistence.model.CartItem;
 import com.example.demo.persistence.model.Checkout;
 import com.example.demo.persistence.repository.CheckoutRepository;
 import com.example.demo.persistence.repository.CustomerRepository;
@@ -10,8 +11,8 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -24,10 +25,10 @@ public class StartCheckoutServiceImpl implements StartCheckoutService {
 
     @Override
     @Transactional
-    public Checkout startCheckout(Long customerId, Map<Long,Integer> productList) {
+    public Checkout startCheckout(Long customerId, Set<CartItem> cart) {
         Checkout initialChekout = new Checkout();
         initialChekout.setCustomerId(customerId);
-        initialChekout.setProductList(productList);
+        initialChekout.setCartItem(cart);
 
         if(!checkoutRepository.existsById(customerId)){
             checkoutRepository.save(initialChekout);
@@ -46,10 +47,15 @@ public class StartCheckoutServiceImpl implements StartCheckoutService {
         Checkout initialChekout = new Checkout();
         initialChekout.setCustomerId(customerId);
 
-        Map<Long, Integer> productList = new HashMap<>();
-        productList.put(productId,productQuantity);
+        Set<CartItem> productSet = new HashSet<>();
+        CartItem cartItem = new CartItem();
+        cartItem.setCustomerId(customerId);
+        cartItem.setProductId(productId);
+        cartItem.setQuantity(productQuantity);
 
-        initialChekout.setProductList(productList);
+        productSet.add(cartItem);
+
+        initialChekout.setCartItem(productSet);
 
         if(!checkoutRepository.existsById(customerId)){
             initialChekout = checkoutRepository.save(initialChekout);

@@ -1,36 +1,33 @@
 package com.example.demo.persistence.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "Checkout")
+@Table(name = "CHECKOUT")
 public class Checkout {
     @Id
     @Column(unique = true)
     private Long customerId;
 
-    private Map<Long,@Size(min = 1, max = 50,message = "Products on Checkout Should be Between 1 to 50") Integer>
-            productList;
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="customer_id")
+    private Set<CartItem> cartItem;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Checkout checkout = (Checkout) o;
-        return customerId.equals(checkout.customerId) && productList.equals(checkout.productList);
+        return customerId.equals(checkout.customerId) && cartItem.equals(checkout.cartItem);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(customerId, productList);
+        return Objects.hash(customerId, cartItem);
     }
 }
